@@ -1,0 +1,73 @@
+@import "tailwindcss";
+
+:root {
+  --background: #08060d;
+  --surface: #0f0c18;
+  --surface-hover: #161224;
+  --surface-border: #231d36;
+  --foreground: #f6f5fa;
+  --foreground-muted: #9c95b3;
+  --accent: #a855f7;
+  --accent-hover: #c084fc;
+  --accent-deep: #7e22ce;
+  --accent-glow: rgba(168, 85, 247, 0.24);
+}
+
+html {
+  scroll-behavior: smooth;
+  color-scheme: dark;
+  background-color: var(--background);
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  letter-spacing: -0.015em;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background-color: #9333ea;
+  color: #ffffff;
+}
+
+/* Custom Minimal Scrollbar with Purple Tint */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #08060d;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #27203d;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #443769;
+}
+
+/* Violet Glow Utilities */
+.violet-glow {
+  box-shadow: 0 0 35px -5px rgba(168, 85, 247, 0.35);
+}
+
+.violet-glow-subtle {
+  box-shadow: 0 0 25px -5px rgba(168, 85, 247, 0.18);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
