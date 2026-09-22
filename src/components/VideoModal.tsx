@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect } from 'react';
-import { X, ExternalLink, ArrowRight, Film, CheckCircle2 } from 'lucide-react';
+import { X, ExternalLink, ArrowRight, Film } from 'lucide-react';
 import { Project } from '@/lib/types';
 
 interface VideoModalProps {
@@ -132,69 +132,26 @@ export function VideoModal({ project, onClose }: VideoModalProps) {
         </div>
 
         {/* Project Details */}
-        <div className="p-6 sm:p-8 space-y-6">
+        <div className="p-5 sm:p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div>
-            <h2 className="text-xl sm:text-2xl font-bold text-white mb-2 leading-snug">
+            <h2 className="text-lg sm:text-xl font-bold text-white leading-snug">
               {project.title}
             </h2>
-            <p className="text-sm text-[#9c95b3] leading-relaxed">
-              {project.description}
-            </p>
-          </div>
-
-          {/* Metadata Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 p-4 rounded-2xl bg-[#130f21] border border-[#231c36]">
-            <div>
-              <div className="text-[10px] font-semibold uppercase tracking-wider text-[#7e7799] mb-1">
-                My Role
-              </div>
-              <div className="text-xs sm:text-sm text-white font-medium">
-                {project.role || 'Video Editor & Motion Designer'}
-              </div>
-            </div>
-
             {project.client_name && (
-              <div>
-                <div className="text-[10px] font-semibold uppercase tracking-wider text-[#7e7799] mb-1">
-                  Client / Brand
-                </div>
-                <div className="text-xs sm:text-sm text-white font-medium">{project.client_name}</div>
-              </div>
+              <span className="text-xs text-[#a855f7] font-mono font-medium">
+                Client: {project.client_name}
+              </span>
             )}
-
-            <div>
-              <div className="text-[10px] font-semibold uppercase tracking-wider text-[#7e7799] mb-1">
-                Tools Used
-              </div>
-              <div className="flex flex-wrap gap-1 mt-0.5">
-                {project.software.map((tool) => (
-                  <span
-                    key={tool}
-                    className="text-[11px] text-[#c084fc] font-mono bg-[#1b152e] px-2 py-0.5 rounded border border-[#312652]"
-                  >
-                    {tool}
-                  </span>
-                ))}
-              </div>
-            </div>
           </div>
 
-          {/* Quick Action */}
-          <div className="pt-2 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-[#1d172e]">
-            <div className="flex items-center gap-2 text-xs text-[#7e7799]">
-              <CheckCircle2 className="w-4 h-4 text-[#a855f7]" />
-              <span>Available for similar projects</span>
-            </div>
-
-            <a
-              href="/#contact"
-              onClick={onClose}
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-full bg-[#9333ea] text-white font-bold text-xs uppercase tracking-wider hover:bg-[#a855f7] transition-all shadow-[0_0_20px_rgba(168,85,247,0.4)]"
-            >
-              <span>Discuss Similar Project</span>
-              <ArrowRight className="w-3.5 h-3.5" />
-            </a>
-          </div>
+          <a
+            href="/#contact"
+            onClick={onClose}
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-full bg-[#9333ea] text-white font-bold text-xs uppercase tracking-wider hover:bg-[#a855f7] transition-all shadow-[0_0_20px_rgba(168,85,247,0.4)] shrink-0"
+          >
+            <span>Discuss Similar Project</span>
+            <ArrowRight className="w-3.5 h-3.5" />
+          </a>
         </div>
       </div>
     </div>
