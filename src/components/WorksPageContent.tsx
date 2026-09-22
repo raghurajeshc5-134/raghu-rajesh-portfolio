@@ -26,6 +26,11 @@ export function WorksPageContent({ initialProjects }: WorksPageContentProps) {
 
   const [activeSubcategory, setActiveSubcategory] = useState<'all' | ProjectSubcategory>('all');
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const [projects, setProjects] = useState<Project[]>(initialProjects);
+
+  useEffect(() => {
+    setProjects(initialProjects);
+  }, [initialProjects]);
 
   useEffect(() => {
     const cat = searchParams.get('category');
@@ -57,7 +62,7 @@ export function WorksPageContent({ initialProjects }: WorksPageContentProps) {
     { label: 'Advertisements', value: 'advertisements', forCategory: 'long_form' },
   ];
 
-  const filteredProjects = initialProjects.filter((project) => {
+  const filteredProjects = projects.filter((project) => {
     if (activeCategory !== 'all' && project.category !== activeCategory) {
       return false;
     }

@@ -1,6 +1,9 @@
 import { Suspense } from 'react';
-import { INITIAL_PROJECTS } from '@/lib/fallback-data';
+import { getProjects } from '@/lib/supabase';
 import { WorksPageContent } from '@/components/WorksPageContent';
+
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
 
 export const metadata = {
   title: 'Works & Case Studies — Raghu Rajesh',
@@ -8,7 +11,9 @@ export const metadata = {
     'Browse selected video editing and motion design work by Raghu Rajesh, including long-form podcasts, commercial ads, YouTube documentaries, and viral shorts.',
 };
 
-export default function WorksPage() {
+export default async function WorksPage() {
+  const projects = await getProjects();
+
   return (
     <Suspense
       fallback={
@@ -17,7 +22,7 @@ export default function WorksPage() {
         </div>
       }
     >
-      <WorksPageContent initialProjects={INITIAL_PROJECTS} />
+      <WorksPageContent initialProjects={projects} />
     </Suspense>
   );
 }
